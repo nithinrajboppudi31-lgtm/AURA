@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA | Curated Luxury & Timeless Style</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased">
+
+  <!-- Promo Bar -->
+  <div class="bg-black text-white text-xs text-center py-2 uppercase tracking-widest font-medium">
+    Complimentary Express Shipping on Orders Over $200
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="text-3xl font-extrabold tracking-widest uppercase font-serif">AURA<span class="text-amber-600">.</span></a>
+        
+        <nav class="hidden md:flex space-x-10 text-sm tracking-widest uppercase font-medium text-gray-700">
+          <a href="index.html" class="hover:text-amber-600 transition">Collections</a>
+          <a href="product.html" class="hover:text-amber-600 transition">Featured Item</a>
+          <a href="#about" class="hover:text-amber-600 transition">Our Story</a>
+        </nav>
+
+        <button onclick="toggleCart()" class="relative p-2 text-gray-900 hover:text-amber-600">
+          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          <span id="cart-count" class="absolute -top-1 -right-1 bg-amber-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative bg-neutral-900 text-white h-[80vh] flex items-center justify-center overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600" class="absolute inset-0 w-full h-full object-cover opacity-40" alt="Luxury Fashion Banner">
+    <div class="relative z-10 text-center max-w-3xl px-6">
+      <p class="text-xs uppercase tracking-widest text-amber-400 mb-3 font-semibold">Elevate Your Everyday</p>
+      <h1 class="text-5xl sm:text-7xl font-serif font-light tracking-tight mb-6">Curated Luxury. Timeless Style.</h1>
+      <div class="flex justify-center gap-4">
+        <a href="#catalog" class="px-8 py-4 bg-amber-600 text-white text-xs uppercase tracking-widest font-semibold hover:bg-amber-700 transition">Explore Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section -->
+  <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-serif font-light tracking-wide">The Autumn Edit</h2>
+      <div class="w-12 h-[2px] bg-amber-600 mx-auto mt-4"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Product Card 1 -->
+      <div class="group border border-gray-100 p-4 rounded-sm hover:shadow-lg transition">
+        <div class="w-full h-96 bg-gray-100 overflow-hidden relative mb-4">
+          <a href="product.html">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Essential Tee">
+          </a>
+        </div>
+        <a href="product.html" class="block font-serif text-lg text-gray-900 font-medium hover:text-amber-600">Aura Essential Tee</a>
+        <p class="text-xs text-gray-500 mt-1">100% Peruvian Pima Cotton</p>
+        <div class="mt-4 flex justify-between items-center">
+          <span class="text-base font-semibold">$65.00</span>
+          <button onclick="addToCart('Aura Essential Tee', 65)" class="px-4 py-2 text-xs uppercase tracking-wider font-semibold border border-black hover:bg-black hover:text-white transition">Add To Cart</button>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="group border border-gray-100 p-4 rounded-sm hover:shadow-lg transition">
+        <div class="w-full h-96 bg-gray-100 overflow-hidden relative mb-4">
+          <a href="product.html">
+            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Leather Jacket">
+          </a>
+        </div>
+        <a href="product.html" class="block font-serif text-lg text-gray-900 font-medium hover:text-amber-600">Urban Leather Jacket</a>
+        <p class="text-xs text-gray-500 mt-1">Full-Grain Lambskin Leather</p>
+        <div class="mt-4 flex justify-between items-center">
+          <span class="text-base font-semibold">$380.00</span>
+          <button onclick="addToCart('Urban Leather Jacket', 380)" class="px-4 py-2 text-xs uppercase tracking-wider font-semibold border border-black hover:bg-black hover:text-white transition">Add To Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-y-0 right-0 max-w-full flex z-50 transform translate-x-full transition-transform duration-300">
+    <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+      <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+        <h2 class="text-lg font-serif font-bold uppercase tracking-wider">Shopping Cart</h2>
+        <button onclick="toggleCart()" class="text-gray-400 hover:text-black"><i data-lucide="x" class="w-6 h-6"></i></button>
+      </div>
+      <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <p class="text-gray-400 text-sm text-center py-12">Your cart is currently empty.</p>
+      </div>
+      <div class="p-6 border-t border-gray-100 bg-neutral-50">
+        <div class="flex justify-between text-base font-semibold mb-6">
+          <span>Subtotal</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        <a href="checkout.html" class="block w-full text-center py-4 bg-amber-600 text-white font-semibold text-xs uppercase tracking-widest hover:bg-amber-700 transition">Proceed To Checkout</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+    let cart = [];
+    function toggleCart() { document.getElementById('cart-drawer').classList.toggle('translate-x-full'); }
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCart();
+      toggleCart();
+    }
+    function updateCart() {
+      document.getElementById('cart-count').innerText = cart.length;
+      const itemsContainer = document.getElementById('cart-items');
+      const totalEl = document.getElementById('cart-total');
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = '<p class="text-gray-400 text-sm text-center py-12">Your cart is currently empty.</p>';
+        totalEl.innerText = '$0.00';
+        return;
+      }
+      let sum = 0;
+      itemsContainer.innerHTML = cart.map((item, idx) => {
+        sum += item.price;
+        return `<div class="flex justify-between items-center border-b pb-3"><div><p class="font-serif font-medium text-sm">${item.name}</p><p class="text-xs text-gray-500">$${item.price}.00</p></div><button onclick="removeItem(${idx})" class="text-xs text-red-500">Remove</button></div>`;
+      }).join('');
+      totalEl.innerText = `$${sum}.00`;
+    }
+    function removeItem(idx) { cart.splice(idx, 1); updateCart(); }
+  </script>
+</body>
+</html>
